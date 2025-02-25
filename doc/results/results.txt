@@ -1,0 +1,79 @@
+Statistics for fq_codel:
+
+Unloaded Network Statistics:
+Mean: 1.68 ms
+Median: 1.45 ms
+Min: 0.91 ms
+Max: 5.28 ms
+Std: 0.59 ms
+
+Loaded Network Statistics:
+Mean: 11.43 ms
+Median: 11.10 ms
+Min: 0.99 ms
+Max: 34.90 ms
+Std: 5.64 ms
+
+Statistics for cake_100:
+
+Unloaded Network Statistics:
+Mean: 1.43 ms
+Median: 1.31 ms
+Min: 0.89 ms
+Max: 3.77 ms
+Std: 0.36 ms
+
+Loaded Network Statistics:
+Mean: 6.13 ms
+Median: 5.73 ms
+Min: 1.00 ms
+Max: 32.50 ms
+Std: 3.37 ms
+
+Statistics for cake_150:
+
+Unloaded Network Statistics:
+Mean: 1.43 ms
+Median: 1.31 ms
+Min: 0.89 ms
+Max: 3.77 ms
+Std: 0.36 ms
+
+Loaded Network Statistics:
+Mean: 10.80 ms
+Median: 10.20 ms
+Min: 1.02 ms
+Max: 36.70 ms
+Std: 5.40 ms
+
+Statistics for purple:
+
+Unloaded Network Statistics:
+Mean: 1.31 ms
+Median: 1.22 ms
+Min: 0.84 ms
+Max: 3.87 ms
+Std: 0.32 ms
+
+Loaded Network Statistics:
+Mean: 5.70 ms
+Median: 5.47 ms
+Min: 0.95 ms
+Max: 21.60 ms
+Std: 2.97 ms
+
+Statistics for purple_esc:
+
+Unloaded Network Statistics:
+Mean: 1.32 ms
+Median: 1.23 ms
+Min: 0.84 ms
+Max: 3.89 ms
+Std: 0.33 ms
+
+Loaded Network Statistics:
+Mean: 4.76 ms
+Median: 4.56 ms
+Min: 0.95 ms
+Max: 18.80 ms
+Std: 2.24 ms
