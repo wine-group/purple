@@ -165,3 +165,37 @@ The testbed consists of:
 2. When congestion is detected (increasing backlog or drops), PURPLE calculates a new estimate of what the "useful capacity" should be
 3. This estimate is used to update CAKE's bandwidth parameter, which controls traffic shaping
 4. As conditions change, PURPLE continues to adapt, preventing bufferbloat while maximising available throughput
+
+## Next Steps
+
+While our current testbed provides valuable insights into PURPLE's performance in real-world conditions, we plan to upgrade our experimental setup to enable more consistent, controlled, and repeatable experiments.
+
+### Enhanced Testbed with Electronic Attenuation Control
+
+The next evolution of our testing environment will incorporate electronically controllable RF attenuators to precisely manipulate signal strength between wireless devices. This will allow us to:
+
+1. **Create Reproducible Scenarios**: Generate consistent and repeatable patterns of signal degradation and interference
+2. **Test Edge Cases**: Simulate rapid capacity variations that might be rare in natural environments but critical for algorithm validation
+3. **Quantify Performance Boundaries**: Systematically determine the limits of PURPLE's adaptation capabilities
+
+### Proposed Implementation
+
+The enhanced testbed will include:
+
+- **Programmable RF Attenuators**: Digital step attenuators (DSAs) with precise dB-level control
+- **Automation Framework**: Software to orchestrate attenuation patterns simulating various real-world scenarios:
+  - Gradual signal fading (e.g., weather effects)
+  - Sudden interference (e.g., competing transmitters)
+  - Oscillating conditions (e.g., moving obstacles)
+- **Synchronised Measurements**: Correlation between attenuation events, measured capacity, and PURPLE's responses
+
+### Additional Improvements
+
+Beyond controlled attenuation, we also plan to:
+
+1. **Multi-hop Testing**: Extend testing to more complex network topologies with multiple wireless hops
+2. **Algorithm Optimization**: Fine-tune PURPLE's parameters based on controlled experiments and formal stability analysis
+3. **Comparative Analysis**: Benchmark against other dynamic bandwidth estimation approaches
+4. **Integration with Other Systems**: Test interoperability with complementary technologies like Multipath TCP (does PURPLE affect normal operation?)
+
+Building this laboratory-grade testbed will help us evaluate PURPLE's effectiveness across a wide range of wireless conditions, and provide stronger evidence of its benefits for real-world deployments in challenging rural environments.
