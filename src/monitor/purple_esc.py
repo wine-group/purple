@@ -13,7 +13,6 @@ import csv
 import re
 import subprocess
 import numpy as np
-# from esc_controller import ESCCapacityEstimator
 from esc_controller import EnhancedESCEstimator
 
 # Disable HTTPS verification warnings
@@ -40,10 +39,6 @@ class BlueQueueMonitor:
         self.last_decrement_time = 0.0
         self.last_drops = 0.0
         
-    # def should_increment(self, backlog: int, drops: int) -> bool:
-    #     """Determine if probability should increase based on queue state."""
-    #     return backlog > 0 #or drops > 0 # needs to be delta drops/drops since last, leaving out for now
-
     def should_increment(self, backlog: int, drops: int) -> bool:
         """Determine if probability should increase based on queue state."""
         # Calculate delta drops since last check
@@ -105,7 +100,6 @@ class CapacityEstimator:
             return 0.0
         
         try:
-            # return float(np.percentile(values, 90))
             return float(np.median(values))
         except Exception as e:
             logging.error(f"Error calculating P50: {e}")
@@ -230,16 +224,11 @@ class CapacityEstimator:
                     # self.useful_capacity = target * 0.95
                     # self.useful_capacity = target
 
-
                     # Testing without...
                     # Only apply smoothing if we're in congestion or target is higher
                     # if self.in_congestion or target > self.useful_capacity:
                     #     alpha = 0.3  # Smoothing factor
                     #     self.useful_capacity = (alpha * target + (1 - alpha) * self.useful_capacity)
-                    # Removed below as this should always return useful_capacity as a higher rate would be caught by the if statement
-                    # else:
-                    #     # In stable state, maintain current capacity unless target is higher
-                    #     self.useful_capacity = max(self.useful_capacity, target)
                 
                 self.last_update_time = current_time
             
@@ -298,9 +287,9 @@ class RadioMonitor:
         # Initialize capacity estimator
         # self.capacity_estimator = CapacityEstimator()
         # self.capacity_estimator = ESCCapacityEstimator(
-        #     omega=0.5,        # Perturbation frequency
-        #     alpha=0.2,        # Filter coefficient
-        #     perturb_amp=1.0,  # Perturbation amplitude
+        #     omega=0.5,          # Perturbation frequency
+        #     alpha=0.2,          # Filter coefficient
+        #     perturb_amp=1.0,    # Perturbation amplitude
         #     safety_margin=0.75  # Base safety margin
         # )
 
