@@ -136,4 +136,32 @@ PURPLE makes some assumptions about wireless network design:
 2. We want to avoid setting an ultra-conservative "safe rate"
 3. Even with conservative settings, unexpected interference can invalidate static configurations
 
-By dynamically adjusting CAKE's bandwidth parameter based on real-time network conditions, PURPLE enables more effective control over bufferbloat in wireless networks where capacity can vary significantly.
+By dynamically adjusting CAKE's bandwidth parameter based on real-time network conditions, PURPLE enables more effective control over bufferbloat in wireless networks where capacity can vary significantly, and without any warning.
+
+## Solution Architecture
+
+PURPLE has been implemented and tested in a controlled wireless testbed environment, as illustrated below:
+
+![Basic PURPLE Testbed](doc/architecture/basic_testbed.png)
+
+### Testbed Components
+
+The testbed consists of:
+
+1. **Wireless Link**: Two Ubiquiti Loco 5AC devices establish a point-to-point wireless link, creating a "real" wireless environment with variable capacity affected by external factors like interference and path loss.
+
+2. **Traffic Generation**: Two Raspberry Pi 5 computers run iPerf2 to generate controlled network traffic:
+   - One Pi acts as the iPerf client (traffic generator)
+   - The other Pi serves as the iPerf server (traffic receiver)
+
+3. **PURPLE Controller**: The monitoring and control system that:
+   - Retrieves real-time data from the wireless link (TX packet backlog and drop count)
+   - Processes this information to compute the "Useful Capacity" 
+   - Dynamically updates the CAKE bandwidth parameter on the traffic-generating side
+
+### Operational Flow
+
+1. The PURPLE controller continuously monitors the packet backlog and drop count from the wireless interface
+2. When congestion is detected (increasing backlog or drops), PURPLE calculates a new estimate of what the "useful capacity" should be
+3. This estimate is used to update CAKE's bandwidth parameter, which controls traffic shaping
+4. As conditions change, PURPLE continues to adapt, preventing bufferbloat while maximising available throughput
