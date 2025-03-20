@@ -193,9 +193,9 @@ The enhanced testbed will include:
 
 Beyond controlled attenuation, we also plan to:
 
-1. **Multi-hop Testing**: Extend testing to more complex network topologies with multiple wireless hops
-2. **Algorithm Optimisation**: Fine-tune PURPLE's parameters based on controlled experiments and formal stability analysis
-3. **Comparative Analysis**: Benchmark against other dynamic bandwidth estimation approaches
-4. **Integration with Other Systems**: Test interoperability with complementary technologies like Multipath TCP (does PURPLE affect normal operation?)
+1. Extend testing to more complex network topologies with multiple wireless hops
+2. Fine-tune PURPLE's parameters based on controlled experiments and formal stability analysis
+3. Benchmark against other dynamic bandwidth estimation approaches
+4. Test interoperability with complementary technologies like Multipath TCP (does PURPLE affect normal operation?)
 
 Building this laboratory-grade testbed will help us evaluate PURPLE's effectiveness across a wide range of wireless conditions, and provide stronger evidence of its benefits for real-world deployments in challenging rural environments.
