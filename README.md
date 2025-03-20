@@ -182,7 +182,7 @@ The next evolution of our testing environment will incorporate electronically co
 
 The enhanced testbed will include:
 
-- **Programmable RF Attenuators**: Digital step attenuators (DSAs) with precise dB-level control
+- **Programmable RF Attenuators**: Digital Step Attenuators (DSAs) with precise dB-level control
 - **Automation Framework**: Software to orchestrate attenuation patterns simulating various real-world scenarios:
   - Gradual signal fading (e.g., weather effects)
   - Sudden interference (e.g., competing transmitters)
