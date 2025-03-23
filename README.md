@@ -126,7 +126,7 @@ where:
 | Response Mechanism | Direct packet marking or dropping at queue ingress | Adjustment of estimated useful capacity based on marking probability |
 | Increment Events | Only on queue overflow (severe congestion) | On any backlog or drops (potentially more sensitive) |
 | Update Frequency | Limited by freeze time between probability updates | Limited by freeze time with smoothing factor for capacity changes |
-| Application | Active queue management for congestion control | Capacity estimation for wireless links |
+| Application | Active queue management for congestion control | Capacity estimation for wireless links, control of CAKE's bandwidth parameter |
 
 ## Key Assumptions
 
