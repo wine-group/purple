@@ -189,7 +189,7 @@ The Probability Density Function (PDF) visualisation demonstrates the probabilit
 
 The boxplot comparison provides a clear visualisation of latency statistics across different configurations. Key observations:
 
-- PURPLE achieves lower median latency compared to optimistic CAKE and defauly FQ-CoDel configurations
+- PURPLE achieves lower median latency compared to optimistic CAKE and default FQ-CoDel configurations
 - The interquartile range (IQR) is significantly smaller with PURPLE
 - PURPLE shows fewer extreme latency spikes that are characteristic of bufferbloat
 
