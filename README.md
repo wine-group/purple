@@ -166,9 +166,46 @@ The testbed consists of:
 3. This estimate is used to update CAKE's bandwidth parameter, which controls traffic shaping
 4. As conditions change, PURPLE continues to adapt, preventing bufferbloat while maximising available throughput
 
+
+
+
+
+
+## Results
+
+The proof of concept implementation of PURPLE has been tested to evaluate its effectiveness in mitigating bufferbloat. The following results demonstrate PURPLE's performance compared to traditional CAKE configured with an optimistic 150 Mbps bandwidth parameter, and a very conservative 100 Mbps bandwidth parameter. During normal operation, the link can sustain 110-130 Mbps of TCP throughput, higher than the conservative tests we performed.
+
+### Performance Comparison
+
+![CDF Comparison](doc/results/img/cdf_comparison.png)
+
+The Cumulative Distribution Function (CDF) comparison shows the distribution of Round-Trip Time (RTT) measurements across different configurations. PURPLE consistently maintains lower latency compared to the static "optimistic" CAKE and default FQ-CoDel configuration.
+
+![PDF Comparison](doc/results/img/pdf_comparison.png)
+
+The Probability Density Function (PDF) visualisation demonstrates the probability distribution of RTT measurements. PURPLE's distribution shows a tighter clustering around lower latency values, demonstrating more consistent network performance compared to the optimistic and default alternatives.
+
+![Boxplot Comparison](doc/results/img/boxplot_comparison.png)
+
+The boxplot comparison provides a clear visualisation of latency statistics across different configurations. Key observations:
+
+- PURPLE achieves lower median latency compared to optimistic CAKE and defauly FQ-CoDel configurations
+- The interquartile range (IQR) is significantly smaller with PURPLE
+- PURPLE shows fewer extreme latency spikes that are characteristic of bufferbloat
+
+### Key Findings
+
+These results demonstrate that PURPLE effectively mitigates bufferbloat while improving throughput when compared to the conservative alternative configuration, even with reasonably optimistic safety margins. Specifically:
+
+1. PURPLE dynamically adjusts to changing wireless conditions, preventing excessive queuing delays
+2. The algorithm maintains stable performance across varying network loads
+3. PURPLE finds an effective balance between throughput and latency, only sacraficing a small amount as the safety margin
+
+These findings confirm that dynamic bandwidth estimation and control through PURPLE offers significant advantages over optimistic configurations, particularly where capacity can vary unpredictably. PURPLE can also increase throughput when compared to conservative approaches that sacrafice too much bandwidth to prevent bufferbloat.
+
 ## Next Steps
 
-While our current testbed provides valuable insights into PURPLE's performance in real-world conditions, we plan to upgrade our experimental setup to enable more consistent, controlled, and repeatable experiments.
+While our current testbed provides valuable insights into PURPLE's performance in real-world conditions, we plan to upgrade our experimental setup to enable more consistent, controlled, and repeatable experiments. We would also like to investigate creating a dynamic safety margin, that can adapt to hardware that lacks accurate rate estimation.
 
 ### Enhanced Testbed with Electronic Attenuation Control
 
