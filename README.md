@@ -183,8 +183,6 @@ PURPLE-AIMD Controller:
     Δt ← t_current - t_last
     t_last ← t_current
     
-    <!-- τ ← CalculateLatencyTrend(ℓ) -->
-    
     if ℓ ≤ ℓ_target + δ_ℓ then
       g ← g + 1
     else
