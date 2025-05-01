@@ -307,9 +307,10 @@ These findings confirm that dynamic bandwidth estimation and control through PUR
 
 ## Next Steps
 
-While our current testbed provides valuable insights into PURPLE's performance in real-world conditions, we plan to upgrade our experimental setup to enable more consistent, controlled, and repeatable experiments. We would also like to investigate creating a dynamic safety margin, that can adapt to hardware that lacks accurate rate estimation.
+While our current testbed provides valuable insights into PURPLE's performance in real-world conditions, we plan to upgrade our experimental setup to enable more consistent, controlled, and repeatable experiments.
+<!-- We would also like to investigate creating a dynamic safety margin, that can adapt to hardware that lacks accurate rate estimation. -->
 
-### Enhanced Testbed with Electronic Attenuation Control
+<!-- ### Enhanced Testbed with Electronic Attenuation Control
 
 The next evolution of our testing environment will incorporate electronically controllable RF attenuators to precisely manipulate signal strength between wireless devices. This will allow us to:
 
@@ -337,4 +338,4 @@ Beyond controlled attenuation, we also plan to:
 3. Benchmark against other dynamic bandwidth estimation approaches
 4. Test interoperability with complementary technologies like Multipath TCP (does PURPLE affect normal operation?)
 
-Building this laboratory-grade testbed will help us evaluate PURPLE's effectiveness across a wide range of wireless conditions, and provide stronger evidence of its benefits for real-world deployments in challenging rural environments.
+Building this laboratory-grade testbed will help us evaluate PURPLE's effectiveness across a wide range of wireless conditions, and provide stronger evidence of its benefits for real-world deployments in challenging rural environments. -->
