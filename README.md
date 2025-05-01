@@ -87,35 +87,9 @@ PURPLE classifies the network state based on the marking probability:
 \end{cases}
 ```
 
-## PURPLE ESC Approach
+## PURPLE-AIMD Approach
 
-PURPLE can also be implemented using an Extremum Seeking Control (ESC) approach. This approach continuously probes the system using a perturbation signal to find the optimal capacity estimate.
-
-### ESC Formulation
-
-With ESC, we define a multi-objective function to maximise:
-
-```math
-J(t) = -Q_c(\hat{C}(t) - \gamma C(t))^2 + Q_r\frac{r(t)}{\hat{C}(t)} - Q_b\phi(b(t)) - Q_d\psi(\dot{d}(t))
-```
-
-where:
-- $\gamma$ is the safety margin (typically 0.85)
-- $Q_c$, $Q_r$, $Q_b$, $Q_d$ are weighting factors
-- $\phi(b)$ is the backlog penalty function
-- $\psi(\dot{d})$ is the drop rate penalty function
-
-The capacity estimate is updated using:
-
-```math
-\hat{C}(t + \Delta t) = (1-\alpha)\hat{C}(t) + \alpha(\gamma C(t) + k(t)g(t))
-```
-
-where:
-- $\alpha$ is the learning rate
-- $k(t)$ is the adaptive gain
-- $g(t) = J(t)p(t)$ is the gradient estimate
-- $p(t) = a\sin(\omega t)$ is the perturbation signal
+PURPLE-AIMD is a variant that uses uni-directional latency as the only control input, making it platform agnostic. 
 
 ## Comparison with BLUE
 
