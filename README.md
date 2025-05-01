@@ -123,8 +123,102 @@ The rate is further constrained by minimum and maximum limits:
 C(t) = \max(C_{min}, \min(C_{max}, C(t)))
 ```
 
+### Recovery Phase
 
+PURPLE-AIMD maintains a counter for consecutive "good" latency measurements:
 
+```math
+g(t) = \begin{cases}
+g(t-1) + 1 & \text{if } \ell(t) \leq \ell_{target} + \delta_\ell \\
+0 & \text{otherwise}
+\end{cases}
+```
+
+It enters the recovery phase when this counter exceeds a threshold:
+
+```math
+\text{recovery} = \begin{cases}
+\text{true} & \text{if } g(t) \geq g_{threshold} \\
+\text{false} & \text{if } \ell(t) \geq \ell_{critical} \text{ or } \ell(t) > \ell_{target} + \delta_\ell
+\end{cases}
+```
+
+where $g_{threshold}$ is the "good" latency threshold (default 5).
+
+<!-- Implementation is a work in progress -->
+<!-- ### Latency Trend Analysis
+
+PURPLE-AIMD determines a trend in latency values to anticipate change:
+
+```math
+\tau(t) = \frac{n\sum_{i=0}^{n-1} i \cdot \ell_{t-i} - \sum_{i=0}^{n-1} i \cdot \sum_{i=0}^{n-1} \ell_{t-i}}{n\sum_{i=0}^{n-1} i^2 - (\sum_{i=0}^{n-1} i)^2}
+```
+
+where:
+- $\ell_{t-i}$ is the latency measured $i$ intervals ago
+- $n$ is the trend window size (default 5)
+
+This represents the slope of the linear regression of recent latency values. -->
+
+### Network State Classification
+
+Similar to regular PURPLE, PURPLE-AIMD determines a state for the network via the unidirectional latency measurements:
+
+```math
+\text{State} = \begin{cases}
+\text{CRITICAL} & \text{if } \ell(t) \geq \ell_{critical} \\
+\text{HIGH} & \text{if } \ell_{target} + \delta_\ell < \ell(t) < \ell_{critical} \\
+\text{RECOVERY} & \text{if } \ell(t) \leq \ell_{target} + \delta_\ell \text{ and recovery = true} \\
+\text{NORMAL} & \text{otherwise}
+\end{cases}
+```
+
+### PURPLE-AIMD Algorithm
+
+```
+PURPLE-AIMD Controller:
+  Initialise: C ← C_initial, g ← 0, recovery ← false, t_last ← 0
+
+  Procedure Update(ℓ, t_current):
+    Δt ← t_current - t_last
+    t_last ← t_current
+    
+    <!-- τ ← CalculateLatencyTrend(ℓ) -->
+    
+    if ℓ ≤ ℓ_target + δ_ℓ then
+      g ← g + 1
+    else
+      g ← 0
+    end if
+    
+    if g ≥ g_threshold then
+      recovery ← true
+    end if
+    
+    if ℓ ≥ ℓ_critical then
+      recovery ← false
+      g ← 0
+      C ← C · (1 - β_d)
+    else if ℓ > ℓ_target + δ_ℓ then
+      recovery ← false
+      C ← C · (1 - β_d/2)
+    else if recovery then
+      C ← C + α_r · Δt
+    end if
+    
+    C ← max(C_min, min(C_max, C))
+    return C, ℓ_target
+```
+
+### Practical Advantages of PURPLE-AIMD
+
+Unlike the original PURPLE algorithm which required access to internal queue metrics, PURPLE-AIMD works as an equipment-agnostic solution, using only latency measurements (ICMP RTT or ideally unidirectional latency) as the control input. This means it can adapt to highly-variable dynamic wireless networks without requiring vendor-specific integrations or implementation.
+
+In practice, PURPLE-AIMD should offer a more consistent user experience, as latency can be measured faster than queue build-up when we are constrained to poll-mode implementation of regular PURPLE, as opposed to a qdisc-level alternative. Furthermore, the platform agnosticism allows deployment across heterogeneous networks, assuming we have control of the device sending data immediately behind the bottleneck link.
+
+However, this design assumes that high latency is indicative of congestion and requires a target latency to be set. In practice, this target latency might be derived through the network operator's intuition of a particular wireless link. It also assumes that repeated low-latency measurements indicate available capacity. The recovery rate should not be excessive to avoid oscillation in the available bandwidth (via adjustment of the CAKE bandwidth parameter).
+
+<!-- Update needed for PURPLE-AIMD... -->
 ## Comparison with BLUE
 
 | Aspect | Original BLUE | PURPLE |
