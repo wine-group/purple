@@ -87,9 +87,43 @@ PURPLE classifies the network state based on the marking probability:
 \end{cases}
 ```
 
-## PURPLE-AIMD Approach
+## PURPLE-AIMD: Latency-Based Dynamic Bandwidth Control
 
-PURPLE-AIMD is a variant that uses uni-directional latency as the only control input, making it platform agnostic. 
+PURPLE-AIMD is a simplified approach to the regular PURPLE algorithm. The responsiveness of regular PURPLE depends on the polling frequency of target radio queue metrics, which might not always be available for all vendors. Furthermore, these metrics are difficult to obtain in real-time. Utilities such as traffic control (tc) on Linux suffice, but poll-mode operation is not ideal, and PURPLE would ideally be implemented at the qdisc level, a desire that is not viable for the millions of legacy radios that experience bufferbloat.
+
+PURPLE-AIMD offers further improvements to responsiveness by using unidirectional latency measurements as the sole input signal for CAKE bandwidth parameter control. A target latency is set (e.g., 5 milliseconds) and the Additive Increase Multiplicative Decrease (AIMD) algorithm. Resultantly, PURPLE-AIMD is platform agnostic and able to operate in environments where low-level queue metrics are not available.
+
+### Mathematical Formulation
+
+PURPLE-AIMD maintains a bandwidth rate $C(t)$ that is updated based on latency measurements. The rate adaptation follows the classic AIMD paradigm, which has good stability properties, and has held the Internet together (as the primary TCP control algorithm) for many decades now.
+
+For each control interval at time $t$, the rate is updated as follows:
+
+```math
+C(t + \Delta t) = \begin{cases}
+C(t) \cdot (1 - \beta_d) & \text{if } \ell(t) \geq \ell_{critical} \\
+C(t) \cdot (1 - \beta_d/2) & \text{if } \ell_{target} + \delta_\ell < \ell(t) < \ell_{critical} \\
+C(t) + \alpha_r \cdot \Delta t & \text{if } \ell(t) \leq \ell_{target} + \delta_\ell \text{ and recovery = true} \\
+C(t) & \text{otherwise}
+\end{cases}
+```
+
+where:
+- $\ell(t)$ is the current latency measurement
+- $\ell_{target}$ is the target latency (default 15 ms)
+- $\ell_{critical}$ is the critical latency threshold (default 30 ms)
+- $\delta_\ell$ is the latency tolerance (default 2 ms)
+- $\beta_d$ is the decay factor for multiplicative decrease (default 0.1)
+- $\alpha_r$ is the recovery rate for additive increase (default 0.5 Mbps)
+- $\Delta t$ is the time elapsed since the last update
+
+The rate is further constrained by minimum and maximum limits:
+
+```math
+C(t) = \max(C_{min}, \min(C_{max}, C(t)))
+```
+
+
 
 ## Comparison with BLUE
 
