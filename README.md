@@ -266,11 +266,6 @@ The testbed consists of:
 3. This estimate is used to update CAKE's bandwidth parameter, which controls traffic shaping
 4. As conditions change, PURPLE continues to adapt, preventing bufferbloat while maximising available throughput
 
-
-
-
-
-
 ## Results
 
 The proof of concept implementation of PURPLE has been tested to evaluate its effectiveness in mitigating bufferbloat. The following results demonstrate PURPLE's performance compared to traditional CAKE configured with an optimistic 150 Mbps bandwidth parameter, and a very conservative 100 Mbps bandwidth parameter. During normal operation, the link can sustain 110-130 Mbps of TCP throughput, higher than the conservative tests we performed.

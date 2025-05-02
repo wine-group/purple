@@ -15,14 +15,14 @@ colors = {
     'cake_100': 'green',
     'cake_150': 'lightgreen',
     'purple': 'red',
-    'purple_esc': 'lightcoral'
+    'purple_aimd': 'lightcoral'
 }
 labels = {
     'fq_codel': 'FQ-CoDel',
-    'cake_100': 'CAKE 100Mbit',
-    'cake_150': 'CAKE 150Mbit',
+    'cake_100': 'CAKE 100M',
+    'cake_150': 'CAKE 150M',
     'purple': 'PURPLE',
-    'purple_esc': 'PURPLE ESC'
+    'purple_aimd': 'PURPLE-AIMD'
 }
 
 # Helper function to load and process data
@@ -182,7 +182,7 @@ def plot_boxplots(data, approaches, save_path):
 
 def main():
     # Define approaches
-    approaches = ['fq_codel', 'cake_100', 'cake_150', 'purple', 'purple_esc']
+    approaches = ['fq_codel', 'cake_100', 'cake_150', 'purple', 'purple_aimd']
     save_path = 'plots'
     
     # Load data

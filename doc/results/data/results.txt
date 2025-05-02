@@ -62,18 +62,18 @@ Min: 0.95 ms
 Max: 21.60 ms
 Std: 2.97 ms
 
-Statistics for purple_esc:
+Statistics for purple_aimd:
 
 Unloaded Network Statistics:
-Mean: 1.32 ms
-Median: 1.23 ms
-Min: 0.84 ms
-Max: 3.89 ms
-Std: 0.33 ms
+Mean: 1.33 ms
+Median: 1.25 ms
+Min: 0.85 ms
+Max: 4.44 ms
+Std: 0.32 ms
 
 Loaded Network Statistics:
-Mean: 4.76 ms
-Median: 4.56 ms
-Min: 0.95 ms
-Max: 18.80 ms
-Std: 2.24 ms
+Mean: 4.10 ms
+Median: 4.00 ms
+Min: 0.98 ms
+Max: 16.70 ms
+Std: 1.88 ms
