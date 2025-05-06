@@ -17,7 +17,7 @@ The system consists of several components:
 2. **PURPLE-AIMD Controller** (`purple_aimd_controller.py`): Core PURPLE-AIMD algorithm that implements Additive Increase/Multiplicative Decrease for CAKE bandwidth control
 3. **Adapter** (`purple_aimd_adapter.py`): Connects the controller to the network environment
 4. **Test Scenarios** (`bottleneck_test_scenarios.sh`): Pre-configured test cases to evaluate controller performance. These can be expanded based on your requirements
-5. **Visualization** (`latency_bandwidth_visualiser.py`): Creates plots to analyze the relationship between bandwidth and latency
+5. **Visualisation** (`latency_bandwidth_visualiser.py`): Creates plots to analyse the relationship between bandwidth and latency
 
 ## Installation Instructions
 
@@ -66,7 +66,7 @@ sudo ip netns exec client_ns ping -c 3 192.168.200.2
 # Run the controller with default settings
 sudo python3 purple_aimd_adapter.py
 
-# Or customize settings (example)
+# Or customise settings (example)
 sudo python3 purple_aimd_adapter.py --target 5.5 --min-rate 10.0 --max-rate 120.0 --initial-rate 95.0 --decay 0.05 --recovery 0.25
 ```
 
@@ -91,10 +91,10 @@ Each scenario generates a CSV file with statistics about latency, bandwidth, bac
 ### Step 4: Visualise and Analyse Results
 
 ```bash
-# Create visualization from collected data
+# Create visualisation from collected data
 python3 latency_bandwidth_visualiser.py --csv scenario1_stats.csv
 
-# Analyze AIMD controller trajectory data
+# Analyse AIMD controller trajectory data
 python3 latency_bandwidth_visualiser.py --data aimd_trajectory.json
 ```
 
@@ -134,7 +134,7 @@ sudo ./simple_bottleneck_emulator.sh clean
 - **Permission denied errors**: Ensure you're running scripts with sudo
 - **Network namespace errors**: Make sure the emulator is set up before running controllers or tests
 - **Python errors**: Verify all Python dependencies are installed
-- **No visualization**: Check that matplotlib and pandas are properly installed
+- **No visualisation**: Check that matplotlib and pandas are properly installed
 
 ## Example Workflow
 
