@@ -2,6 +2,8 @@
 
 This guide provides step-by-step instructions for setting up and running PURPLE experiments in a testbed environment with Ubiquiti wireless radios that run airOS. PURPLE-AIMD can be modified to run with other radios by removing the airOS-specific web API calls which are currently used for monitoring.
 
+PURPLE-AIMD **does not** require unidirectional latency measurements to function, although they are recommended where possible. The included implementation uses ICMP RTT measurements, which do not require precise clock synchronisation.
+
 ## Prerequisites
 
 ### Hardware Requirements
