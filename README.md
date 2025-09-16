@@ -8,6 +8,10 @@ Bufferbloat, or excessive queuing delay under load, is a noticeable quality of s
 
 While FQ-CoDel and CAKE are existing AQM solutions that help mitigate bufferbloat, they require properly configured bandwidth settings. In wireless networks where capacity can be highly variable, static bandwidth settings are insufficient. PURPLE addresses this by dynamically adjusting CAKE's bandwidth parameter based on real-time network conditions.
 
+## Quick Start
+
+**[See the Quick Start Guide](QUICKSTART.md)** for step-by-step instructions on setting up and running PURPLE experiments in a testbed environment.
+
 ## How PURPLE Works
 
 PURPLE consists of two main components:
