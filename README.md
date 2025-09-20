@@ -4,7 +4,7 @@ PURPLE is an algorithm designed to estimate "useful capacity" and control buffer
 
 ## Disclaimer
 
-This repository hosts an application-specific proof of concept implementation of PURPLE that is intended for use with Ubiquiti airOS radios. It has been tested on a pair of NanoStation Loco 5ACs, although the Ubiquiti web API might differ between models.
+This repository hosts an application-specific proof of concept implementation of PURPLE that is intended for use with Ubiquiti airMAX radios running airOS. It has been tested on a pair of NanoStation Loco 5ACs, although the Ubiquiti web API might differ between models.
 
 > **Note:** [See cake-autorate](https://github.com/lynxthecat/cake-autorate) for a general purpose, production ready alternative for dynamic control of CAKE.
 
