@@ -2,6 +2,12 @@
 
 PURPLE is an algorithm designed to estimate "useful capacity" and control bufferbloat in wireless networks through dynamic adjustment of CAKE's bandwidth parameter. The algorithm draws inspiration from the BLUE active queue management scheme, itself being an evolution of RED, adapting its congestion detection mechanisms for wireless capacity estimation.
 
+## Disclaimer
+
+This repository hosts an application-specific proof of concept implementation of PURPLE that is intended for use with Ubiquiti airOS radios. It has been tested on a pair of NanoStation Loco 5ACs, although the Ubiquiti web API might differ between models.
+
+> **Note:** [See cake-autorate](https://github.com/lynxthecat/cake-autorate) for a general purpose, production ready alternative for dynamic control of CAKE.
+
 ## Background
 
 Bufferbloat, or excessive queuing delay under load, is a noticeable quality of service degradation that occurs when latency-sensitive traffic experiences the effects of increased packet buffering delays in network devices. This phenomenon leads to increased latency and reduced network performance, particularly affecting real-time applications.
